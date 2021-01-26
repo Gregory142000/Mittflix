@@ -1,23 +1,49 @@
-import React from "react";
+/** Main imports */
+import React, { useEffect, useState } from "react";
 
+/** The Movie component is in charge of formatting the movie cards in addition to controlling their status */
 function Movie(props) {
+  const [ dataToggled, setDataToggled ] = useState("false") // The state that is in charge of controlling if the heart button was pressed.
+
+  let myLocalStorage = window.localStorage
+
+  /** changeDataToggled is in charge of controlling the event that is generated when pressing the heart button */
+  function changeDataToggled() {
+    let listId = myLocalStorage.getItem("movieLike") // LocalStorage is used to store a variable that allows us to recognize which movie was selected
+
+    if(dataToggled === "true"){
+      let idSplit = listId.split(",")
+      setDataToggled("false")
+      idSplit.splice(idSplit.indexOf(`${props.id}`), 1)
+      myLocalStorage.setItem("movieLike", idSplit.join())
+    } else{
+      setDataToggled("true")
+      myLocalStorage.setItem("movieLike", `${listId},${props.id}`)
+    }
+  }
+
+  /** The useEffect determines the life cycle of the component */
+  useEffect(() => {
+    let listId = myLocalStorage.getItem("movieLike").split(",")
+
+    if(listId.indexOf(props.id.toString()) !== -1){
+      setDataToggled("true")
+    }
+  }, [myLocalStorage, props.id])
+
   return (
     <div className="movie">
       <img
-        src="https://image.tmdb.org/t/p/w500/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg"
+        src={props.src}
         alt="Movie poster"
       />
       <div className="overlay">
-        <div className="title">Fight Club</div>
-        <div className="rating">8.4/10</div>
+        <div className="title">{props.title}</div>
+        <div className="rating">{props.rating}/10</div>
         <div className="plot">
-          A ticking-time-bomb insomniac and a slippery soap salesman channel
-          primal male aggression into a shocking new form of therapy. Their
-          concept catches on, with underground "fight clubs" forming in every
-          town, until an eccentric gets in the way and ignites an out-of-control
-          spiral toward oblivion.
+          {props.plot}
         </div>
-        <div data-toggled="false" className="listToggle">
+        <div onClick={changeDataToggled} data-toggled={dataToggled} className="listToggle">
           <div>
             <i className="far fa-heart"></i>
             <i className="fas fa-heart"></i>
