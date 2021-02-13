@@ -1,5 +1,5 @@
 # Mittflix
-**Puedes ver este proyecto en: []()**
+**Puedes ver este proyecto en: [https://gregory142000.github.io/Mittflix/](https://gregory142000.github.io/Mittflix/)**
 
 ## Sobre este Proyecto
 Mittflix es un proyecto desarrollado en React.js que tiene como objetivo desplegar la selección de películas que ofrece la API de TMDB, el usuario puede ingresar en la barra de búsqueda el termino por el que desea filtrar el catalogo de películas y se desplegaran todas las coincidencias para su búsqueda.
@@ -19,20 +19,15 @@ La aplicación no tiene mayor complejidad y todo ocurre en un mismo lugar de la 
 
 Si deseas desplegar este proyecto primero clona el repositorio:
 
----
-git clone https://github.com/Gregory142000/Mittflix.git
----
+``git clone https://github.com/Gregory142000/Mittflix.git``
+
 
 Entre en la carpeta donde clono el proyecto e instale las dependencias con npm:
 
----
-npm install
----
+``npm install``
 
 Y use el comando de react-create-app para iniciar el proyecto en un servidor local:
 
----
-npm run start
----
+``npm run start``
 
 Mittflix se desplegara en el localhost:3000
