@@ -1,6 +1,6 @@
 {
-  "homepage": " https://gregory142000.github.io/web-app-tmdb",
-  "name": "web-app-tmdb",
+  "homepage": " https://gregory142000.github.io/Mittflix",
+  "name": "mittflix",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
